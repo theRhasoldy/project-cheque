@@ -12,6 +12,7 @@ export default async function Home() {
       <Typography variant="h3">Hello World</Typography>
       <Typography variant="body1">Hello World</Typography>
       <Typography variant="body2">Hello World</Typography>
+      <Typography variant="body2">Hello World</Typography>
       <Button variant="contained">Hello Button</Button>
       <Typography>{user.data.user?.email}</Typography>
       <Link href="/login">Go to login</Link>
