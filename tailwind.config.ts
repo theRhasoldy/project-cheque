@@ -44,6 +44,16 @@ const config = {
         },
       },
     },
+    fontSize: {
+      xs: "0.75rem",
+      sm: "0.875rem",
+      base: "1rem",
+      lg: "1.125",
+      xl: "2rem",
+      "2xl": "3rem",
+      "3xl": "4rem",
+      "4xl": "5rem",
+    },
   },
   plugins: [],
 } satisfies Config;
