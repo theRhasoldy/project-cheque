@@ -6,6 +6,14 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
+export type User = {
+  avatar_url: string | null;
+  email: string | null;
+  id: string;
+  updated_at: string | null;
+  username: string | null;
+};
+
 export interface Database {
   public: {
     Tables: {
@@ -114,27 +122,9 @@ export interface Database {
         Relationships: [];
       };
       users: {
-        Row: {
-          avatar_url: string | null;
-          email: string | null;
-          id: string;
-          updated_at: string | null;
-          username: string | null;
-        };
-        Insert: {
-          avatar_url?: string | null;
-          email?: string | null;
-          id: string;
-          updated_at?: string | null;
-          username?: string | null;
-        };
-        Update: {
-          avatar_url?: string | null;
-          email?: string | null;
-          id?: string;
-          updated_at?: string | null;
-          username?: string | null;
-        };
+        Row: User;
+        Insert: User;
+        Update: User;
         Relationships: [
           {
             foreignKeyName: "fk_auth_users";
