@@ -10,6 +10,8 @@ export const POST = async (request: Request) => {
   // get data from form
   const email = formData.get("email")?.toString() ?? "";
   const password = formData.get("password")?.toString() ?? "";
+  const username = formData.get("username")?.toString() ?? "";
+  const avatar_url = formData.get("avatar")?.toString() ?? "";
 
   // setup route handler
   const cookieStore = cookies();
@@ -28,10 +30,13 @@ export const POST = async (request: Request) => {
   error && console.log(error.message);
 
   if (data.user) {
-    console.log(data);
-    const { data: userData, error: userError } = await supabase
+    // add additional user data to users table
+    const { error: userError } = await supabase
       .from("users")
-      .update({ username: "ashroof", email: "ashroof@gmail.com" })
+      .update({
+        username,
+        avatar_url,
+      })
       .eq("id", String(data.user.id));
 
     userError && console.log(userError.message);

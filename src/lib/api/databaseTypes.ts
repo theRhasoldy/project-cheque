@@ -7,11 +7,10 @@ export type Json =
   | Json[];
 
 export type User = {
-  avatar_url: string | null;
-  email: string | null;
-  id: string;
-  updated_at: string | null;
-  username: string | null;
+  avatar_url?: string | null;
+  id?: string;
+  updated_at?: string | null;
+  username?: string | null;
 };
 
 export interface Database {
