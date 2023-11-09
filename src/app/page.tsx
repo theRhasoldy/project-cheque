@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export default async function Home() {
   const user = await supabaseServer.auth.getUser();
-
   return (
     <main>
       <Typography variant="h1">Hello World</Typography>

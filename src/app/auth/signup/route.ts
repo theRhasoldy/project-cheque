@@ -17,7 +17,7 @@ export const POST = async (request: Request) => {
     cookies: () => cookieStore,
   });
 
-  const { data } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -25,8 +25,17 @@ export const POST = async (request: Request) => {
     },
   });
 
-  if (data) {
+  error && console.log(error.message);
+
+  if (data.user) {
     console.log(data);
+    const { data: userData, error: userError } = await supabase
+      .from("users")
+      .update({ username: "ashroof", email: "ashroof@gmail.com" })
+      .eq("id", String(data.user.id));
+
+    userError && console.log(userError.message);
+
     return NextResponse.redirect(requestUrl.origin, { status: 301 });
   }
 };

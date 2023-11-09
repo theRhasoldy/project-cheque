@@ -1,13 +1,14 @@
+import { Button, Input } from "@mui/material";
 import React from "react";
 
-const LoginPage = () => {
+const LoginPage = async () => {
   return (
     <form action="/auth/login" method="post">
-      <input type="text" name="email" />
-      <input type="password" name="password" />
-      <button formAction="/auth/signup" type="submit">
+      <Input type="text" name="email" />
+      <Input type="password" name="password" />
+      <Button formAction="/auth/signup" type="submit">
         Sign Up
-      </button>
+      </Button>
     </form>
   );
 };
