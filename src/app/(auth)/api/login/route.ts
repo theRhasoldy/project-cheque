@@ -24,7 +24,7 @@ export const POST = async (request: Request) => {
 
   if (!data.user) {
     return NextResponse.redirect(
-      `${requestUrl.origin}/login?status=${error?.status}`,
+      `${requestUrl.origin}/login?error=${error?.message}`,
       {
         status: 301,
       }
