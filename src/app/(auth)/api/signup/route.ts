@@ -22,14 +22,16 @@ export const POST = async (request: Request) => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: {
-      emailRedirectTo: `${requestUrl.origin}/auth/callback`,
-    },
+    options: { emailRedirectTo: `${requestUrl.origin}/auth/callback` },
   });
 
-  error && console.log(error.message);
-
-  if (data.user) {
+  // handle error if it occurs in auth phase
+  if (error) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}/signup?error=${error?.message}`,
+      { status: 301 }
+    );
+  } else {
     // add additional user data to users table
     const { error: userError } = await supabase
       .from("users")
@@ -37,10 +39,14 @@ export const POST = async (request: Request) => {
         username,
         avatar_url,
       })
-      .eq("id", String(data.user.id));
+      .eq("id", String(data?.user?.id));
 
-    userError && console.log(userError.message);
-
-    return NextResponse.redirect(requestUrl.origin, { status: 301 });
+    // handle error when adding to users table
+    if (userError) {
+      return NextResponse.redirect(
+        `${requestUrl.origin}/signup?error=${userError?.message}`,
+        { status: 301 }
+      );
+    } else return NextResponse.redirect(requestUrl.origin, { status: 301 });
   }
 };
