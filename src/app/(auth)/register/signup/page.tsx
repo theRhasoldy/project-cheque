@@ -1,7 +1,8 @@
 import { Button, Input } from "@mui/material";
-import React from "react";
 
-const LoginPage = async () => {
+const SignUpForm = () => {
+  console.log(typeof window === "undefined");
+
   return (
     <form
       action="/auth/login"
@@ -12,11 +13,15 @@ const LoginPage = async () => {
       <Input type="text" name="username" />
       <Input type="text" name="avatar" />
       <Input type="password" name="password" />
-      <Button variant="contained" formAction="../api/signup" type="submit">
+      <Button
+        variant="contained"
+        // formAction="../api/signup"
+        type="submit"
+      >
         Sign Up
       </Button>
     </form>
   );
 };
 
-export default LoginPage;
+export default SignUpForm;
