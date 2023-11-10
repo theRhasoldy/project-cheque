@@ -11,11 +11,7 @@ const SignUpForm = () => {
       <Input type="text" name="username" />
       <Input type="text" name="avatar" />
       <Input type="password" name="password" />
-      <Button
-        variant="contained"
-        // formAction="../api/signup"
-        type="submit"
-      >
+      <Button variant="contained" formAction="../api/signup" type="submit">
         Sign Up
       </Button>
     </form>
