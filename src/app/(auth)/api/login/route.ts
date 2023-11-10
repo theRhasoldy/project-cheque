@@ -17,12 +17,17 @@ export const POST = async (request: Request) => {
     cookies: () => cookieStore,
   });
 
-  const user = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
-  console.log(user);
-
-  return NextResponse.redirect(requestUrl.origin, { status: 301 });
+  if (!data.user) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}/login?status=${error?.status}`,
+      {
+        status: 301,
+      }
+    );
+  } else return NextResponse.redirect(requestUrl.origin, { status: 301 });
 };

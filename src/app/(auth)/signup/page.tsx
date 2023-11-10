@@ -1,11 +1,9 @@
 import { Button, Input } from "@mui/material";
 
 const SignUpForm = () => {
-  console.log(typeof window === "undefined");
-
   return (
     <form
-      action="/auth/login"
+      action="../api/signup"
       method="post"
       className="flex flex-col w-1/2 gap-4"
     >
