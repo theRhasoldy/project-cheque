@@ -9,6 +9,7 @@ export const middleware = async (req: NextRequest) => {
 
   const session = await supabase.auth.getSession(); // create session for user and refresh it if neccessary
 
+  // route to login if not logged
   if (
     !session.data.session &&
     !(requestUrl.pathname === "/login" || requestUrl.pathname === "/signup")
@@ -23,5 +24,7 @@ export const middleware = async (req: NextRequest) => {
 };
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|assets|public|favicon.ico|sw.js).*)",
+  ],
 };
