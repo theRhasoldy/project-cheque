@@ -9,13 +9,19 @@ export const middleware = async (req: NextRequest) => {
 
   const session = await supabase.auth.getSession(); // create session for user and refresh it if neccessary
 
-  if (!session.data.session && requestUrl.pathname !== "/login") {
+  if (
+    !session.data.session &&
+    !(requestUrl.pathname === "/login" || requestUrl.pathname === "/signup")
+  ) {
     return NextResponse.redirect(new URL("/login", requestUrl));
+  } else if (
+    session.data.session &&
+    (requestUrl.pathname === "/login" || requestUrl.pathname === "/signup")
+  ) {
+    return NextResponse.redirect(requestUrl.origin, { status: 301 });
   }
 };
 
 export const config = {
-  matcher: [
-    "/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|login|signup|auth).*)",
-  ],
+  matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"],
 };
