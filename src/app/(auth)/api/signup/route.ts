@@ -22,7 +22,7 @@ export const POST = async (request: Request) => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { emailRedirectTo: `${requestUrl.origin}/auth/callback` },
+    options: { emailRedirectTo: `${requestUrl.origin}` },
   });
 
   // handle error if it occurs in auth phase
@@ -43,6 +43,7 @@ export const POST = async (request: Request) => {
 
     // handle error when adding to users table
     if (userError) {
+      console.log(userError);
       return NextResponse.redirect(
         `${requestUrl.origin}/signup?error=${userError?.message}`,
         { status: 301 }
