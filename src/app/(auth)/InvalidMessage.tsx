@@ -6,12 +6,8 @@ import React from "react";
 const InvalidMessage = () => {
   const params = useSearchParams();
 
-  if (params.get("status"))
-    return (
-      <div className="text-light-primary-main">
-        Your Email or Passowrd is Incorrect
-      </div>
-    );
+  if (params.get("error"))
+    return <div className="text-light-primary-main">{params.get("error")}</div>;
 };
 
 export default InvalidMessage;
