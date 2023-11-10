@@ -15,9 +15,9 @@ const RegisterPage = ({ children }: { children: ReactNode }) => {
         </div>
         <InvalidMessage />
       </div>
-      <div className="relative h-screen">
+      <div className="relative h-[60vh] md:h-[96vh] m-4 md:mt-4 md:mr-4">
         <Image
-          className="object-cover rounded-[3rem] p-4"
+          className="object-cover rounded-[2.5rem] shadow-xl"
           src={"/img/auth-cover.jpg"}
           priority
           fill
