@@ -1,11 +1,14 @@
 "use client";
 
 import { Tab, Tabs } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
 
 const TabBar = () => {
-  const [tabValue, setTabValue] = useState<string>("login");
+  const pathname = usePathname();
+  const [tabValue, setTabValue] = useState<string>(
+    pathname.split("/").at(-1) ?? "login"
+  );
   const router = useRouter();
 
   const handleChange = (
@@ -13,7 +16,7 @@ const TabBar = () => {
     newValue: string
   ): void => {
     setTabValue(newValue);
-    router.push(`/register/${newValue}`);
+    router.push(`/${newValue}`);
   };
 
   return (
