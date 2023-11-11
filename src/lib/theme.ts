@@ -1,11 +1,17 @@
 import { Montserrat } from "next/font/google";
 import resolveConfig from "tailwindcss/resolveConfig";
 import config from "../../tailwind.config";
-import { ThemeOptions, createTheme } from "@mui/material";
+import { ThemeOptions, createTheme } from "@mui/material/styles";
 import LinkBehaviour from "@/components/Link";
 
 const tailwindConfig = resolveConfig(config);
 const montserrat = Montserrat({ subsets: ["latin"] });
+
+declare module "@mui/material" {
+  interface ButtonPropsSizeOverrides {
+    xlarge: true;
+  }
+}
 
 const themeDefaults: ThemeOptions = {
   typography: {
@@ -50,6 +56,16 @@ const themeDefaults: ThemeOptions = {
     borderRadius: 9,
   },
   components: {
+    MuiButton: {
+      variants: [
+        {
+          props: { size: "xlarge" },
+          style: {
+            padding: "14px 28px",
+          },
+        },
+      ],
+    },
     MuiLink: {
       defaultProps: {
         component: LinkBehaviour,
