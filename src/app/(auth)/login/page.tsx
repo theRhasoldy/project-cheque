@@ -4,6 +4,9 @@ import React from "react";
 const page = () => {
   return (
     <div className="flex flex-col gap-4 w-8/12">
+      <Typography className="!mb-4" variant="h1">
+        Welcome Back!
+      </Typography>
       <form
         action="../auth/login"
         method="post"
