@@ -1,20 +1,25 @@
+import CreateRoomButton from "@/components/CreateRoomButton";
 import { supabaseServer } from "@/lib/api/supabase";
-import { Button, Typography } from "@mui/material";
-import Link from "next/link";
+import Typography from "@mui/material/Typography";
 
 export default async function Home() {
-  const user = await supabaseServer.auth.getUser();
+  const userAuth = await supabaseServer.auth.getUser();
+  const { data } = await supabaseServer
+    .from("users")
+    .select("username")
+    .eq("id", String(userAuth.data.user?.id));
+
   return (
-    <main>
-      <Typography variant="h1">Hello World</Typography>
-      <Typography variant="h2">Hello World</Typography>
-      <Typography variant="h3">Hello World</Typography>
-      <Typography variant="body1">Hello World</Typography>
-      <Typography variant="body2">Hello World</Typography>
-      <Typography variant="body2">Hello World</Typography>
-      <Button variant="contained">Hello Button</Button>
-      <Typography>{user.data.user?.email}</Typography>
-      <Link href="/login">Go to login</Link>
+    <main className="flex flex-col w-full h-screen justify-center items-center">
+      <div className="w-1/2">
+        <Typography className="flex" variant="h1">
+          Hello {data?.at(0)?.username ?? "User"},
+        </Typography>
+        <Typography className="flex" variant="h2">
+          Hope your meal was as delicious as you 🤤
+        </Typography>
+        <CreateRoomButton />
+      </div>
     </main>
   );
 }
