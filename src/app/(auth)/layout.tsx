@@ -10,7 +10,7 @@ const RegisterPage = ({ children }: { children: ReactNode }) => {
         <div>
           <TabBar />
         </div>
-        <div className="h-full w-full flex items-center justify-center">
+        <div className="h-full w-full flex flex-col items-center justify-center">
           {children}
         </div>
         <InvalidMessage />

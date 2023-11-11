@@ -2,14 +2,18 @@
 
 import { Tab, Tabs } from "@mui/material";
 import { usePathname, useRouter } from "next/navigation";
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 
 const TabBar = () => {
   const pathname = usePathname();
-  const [tabValue, setTabValue] = useState<string>(
-    pathname.split("/").at(-1) ?? "login"
-  );
   const router = useRouter();
+  const [tabValue, setTabValue] = useState<string | undefined>(
+    pathname.split("/").at(-1) ?? "/login"
+  );
+
+  useEffect(() => {
+    setTabValue(pathname.split("/").at(-1));
+  }, [pathname]);
 
   const handleChange = (
     event: SyntheticEvent<Element, Event>,

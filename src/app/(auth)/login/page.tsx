@@ -1,19 +1,26 @@
-import { Button, Input } from "@mui/material";
+import { Button, Input, Typography } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
   return (
-    <form
-      action="../auth/login"
-      method="post"
-      className="flex flex-col w-1/2 gap-4"
-    >
-      <Input type="text" name="email" />
-      <Input type="password" name="password" />
-      <Button variant="contained" formAction="../api/login" type="submit">
-        Log in
-      </Button>
-    </form>
+    <>
+      <form
+        action="../auth/login"
+        method="post"
+        className="flex flex-col w-1/2 gap-4"
+      >
+        <Input type="text" name="email" />
+        <Input type="password" name="password" />
+        <Button variant="contained" formAction="../api/login" type="submit">
+          Log in
+        </Button>
+      </form>
+      <Typography>
+        Are you new here?
+        <Link href="/signup">Join Us Now!</Link>
+      </Typography>
+    </>
   );
 };
 
