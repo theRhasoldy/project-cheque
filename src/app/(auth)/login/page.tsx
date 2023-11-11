@@ -16,9 +16,14 @@ const page = () => {
           Log in
         </Button>
       </form>
-      <Typography>
-        Are you new here?
-        <Link href="/signup">Join Us Now!</Link>
+      <Typography variant="body2">
+        Are you new here?{" "}
+        <Link
+          className="text-light-primary-main dark:text-dark-primary-main"
+          href="/signup"
+        >
+          Join Us Now!
+        </Link>
       </Typography>
     </>
   );

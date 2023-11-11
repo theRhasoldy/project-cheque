@@ -3,6 +3,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import config from "../../tailwind.config";
 import { createTheme } from "@mui/material";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
+import LinkBehaviour from "@/components/Link";
 
 const tailwindConfig = resolveConfig(config);
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -56,6 +57,21 @@ export const lightTheme = createTheme({
     secondary: colors.light.secondary,
   },
   typography: fontFamily,
+  shape: {
+    borderRadius: 9,
+  },
+  components: {
+    MuiLink: {
+      defaultProps: {
+        component: LinkBehaviour,
+      },
+    },
+    MuiButtonBase: {
+      defaultProps: {
+        LinkComponent: LinkBehaviour,
+      },
+    },
+  },
 });
 
 export const darkTheme = createTheme({
@@ -66,4 +82,7 @@ export const darkTheme = createTheme({
     secondary: colors.dark.secondary,
   },
   typography: fontFamily,
+  shape: {
+    borderRadius: 9,
+  },
 });

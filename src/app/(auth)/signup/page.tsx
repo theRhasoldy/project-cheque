@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, Link, TextField, Typography } from "@mui/material";
 
 const SignUpForm = () => {
   return (
@@ -14,6 +14,11 @@ const SignUpForm = () => {
       <Button variant="contained" formAction="../api/signup" type="submit">
         Sign Up
       </Button>
+      <Typography variant="body2">
+        By signing up, you agree to our{" "}
+        <Link href="/login">terms & conditions</Link> and{" "}
+        <Link href="/login">privacy policy</Link>
+      </Typography>
     </form>
   );
 };
