@@ -1,31 +1,29 @@
-import { Button, TextField, Typography } from "@mui/material";
-import Link from "next/link";
+import { Button, Link, TextField, Typography } from "@mui/material";
 import React from "react";
 
 const page = () => {
   return (
-    <>
+    <div className="flex flex-col gap-4 w-8/12">
       <form
         action="../auth/login"
         method="post"
-        className="flex flex-col w-1/2 gap-4"
+        className="flex flex-col gap-4"
       >
-        <TextField type="text" name="email" />
-        <TextField type="password" name="password" />
-        <Button variant="contained" formAction="../api/login" type="submit">
+        <TextField placeholder="Email Address" type="text" name="email" />
+        <TextField placeholder="Password" type="password" name="password" />
+        <Button
+          variant="contained"
+          size="xlarge"
+          formAction="../api/login"
+          type="submit"
+        >
           Log in
         </Button>
       </form>
       <Typography variant="body2">
-        Are you new here?{" "}
-        <Link
-          className="text-light-primary-main dark:text-dark-primary-main"
-          href="/signup"
-        >
-          Join Us Now!
-        </Link>
+        Are you new here? <Link href="/signup">Join Us Now!</Link>
       </Typography>
-    </>
+    </div>
   );
 };
 
