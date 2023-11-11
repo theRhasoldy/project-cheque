@@ -1,4 +1,4 @@
-import { Button, Input, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
@@ -10,8 +10,8 @@ const page = () => {
         method="post"
         className="flex flex-col w-1/2 gap-4"
       >
-        <Input type="text" name="email" />
-        <Input type="password" name="password" />
+        <TextField type="text" name="email" />
+        <TextField type="password" name="password" />
         <Button variant="contained" formAction="../api/login" type="submit">
           Log in
         </Button>
