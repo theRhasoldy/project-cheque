@@ -2,10 +2,9 @@ import { ReactNode } from "react";
 import TabBar from "./TabBar";
 import InvalidMessage from "./InvalidMessage";
 import Image from "next/image";
-
 const RegisterPage = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex flex-col-reverse md:grid lg:grid grid-cols-2">
+    <div className="h-screen flex flex-col-reverse md:grid lg:grid grid-cols-2 bg-gradient-light-background dark:bg-gradient-dark-background">
       <div className="flex flex-col items-center">
         <div>
           <TabBar />
@@ -17,7 +16,7 @@ const RegisterPage = ({ children }: { children: ReactNode }) => {
       </div>
       <div className="relative h-[60vh] md:h-[96vh] m-4 md:mt-4 md:mr-4">
         <Image
-          className="object-cover rounded-[2.5rem] shadow-xl"
+          className="object-cover rounded-[2.5rem] shadow-2xl"
           src="/img/auth-cover-s.jpg"
           priority
           fill
