@@ -65,7 +65,7 @@ export default function ThemeRegistry({
     <CacheProvider value={cache}>
       <ThemeProvider theme={mode === "light" ? lightTheme : darkTheme}>
         <CssBaseline />
-        {children}
+        <body className={mode}>{children}</body>
       </ThemeProvider>
     </CacheProvider>
   );
