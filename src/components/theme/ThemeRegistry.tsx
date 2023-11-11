@@ -16,7 +16,7 @@ type Props = {
 type ThemeMode = "light" | "dark";
 
 export default function ThemeRegistry({ options, children }: Props) {
-  const [mode, setMode] = useState(localStorage.getItem("theme"));
+  const [mode, setMode] = useState(localStorage?.getItem("theme") ?? "light");
 
   useEffect(() => {
     const storedMode = localStorage.getItem("theme");
