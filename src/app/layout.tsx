@@ -14,9 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ThemeRegistry defaultMode="light" options={{ key: "mui" }}>
-        {children}
-      </ThemeRegistry>
+      <ThemeRegistry options={{ key: "mui" }}>{children}</ThemeRegistry>
     </html>
   );
 }

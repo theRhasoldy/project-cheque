@@ -6,20 +6,22 @@ import { CacheProvider } from "@emotion/react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { lightTheme, darkTheme } from "@/lib/theme";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type Props = {
   options: Options;
   children: ReactNode;
-  defaultMode: "light" | "dark";
 };
 
-export default function ThemeRegistry({
-  defaultMode = "light",
-  options,
-  children,
-}: Props) {
-  const [mode, setMode] = useState(defaultMode);
+type ThemeMode = "light" | "dark";
+
+export default function ThemeRegistry({ options, children }: Props) {
+  const [mode, setMode] = useState(localStorage.getItem("theme"));
+
+  useEffect(() => {
+    const storedMode = localStorage.getItem("theme");
+    setMode(storedMode as ThemeMode);
+  }, [mode]);
 
   const [{ cache, flush }] = useState(() => {
     const cache = createCache(options);
@@ -65,7 +67,7 @@ export default function ThemeRegistry({
     <CacheProvider value={cache}>
       <ThemeProvider theme={mode === "light" ? lightTheme : darkTheme}>
         <CssBaseline />
-        <body className={mode}>{children}</body>
+        <body className={mode as ThemeMode}>{children}</body>
       </ThemeProvider>
     </CacheProvider>
   );
