@@ -76,6 +76,13 @@ const themeDefaults: ThemeOptions = {
         LinkComponent: LinkBehaviour,
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          boxShadow: "0px 10px 15px 2px rgba(0,0,0,0.05)",
+        },
+      },
+    },
   },
 };
 
