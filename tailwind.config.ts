@@ -26,6 +26,9 @@ const config = {
           dark: "#5a189a",
           contrastText: "#fff",
         },
+        grey: {
+          100: "#C3B3B3",
+        },
       },
       dark: {
         background: {
@@ -43,6 +46,9 @@ const config = {
           light: "#e0aaff",
           dark: "#9d4edd",
           contrastText: "#000",
+        },
+        grey: {
+          100: "#C3B3B3",
         },
       },
     },

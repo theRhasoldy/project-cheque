@@ -95,6 +95,7 @@ export const lightTheme = createTheme({
     background: colors.light.background,
     primary: colors.light.primary,
     secondary: colors.light.secondary,
+    grey: colors.light.grey,
   },
 });
 
@@ -105,5 +106,6 @@ export const darkTheme = createTheme({
     background: colors.dark.background,
     primary: colors.dark.primary,
     secondary: colors.dark.secondary,
+    grey: colors.dark.grey,
   },
 });
