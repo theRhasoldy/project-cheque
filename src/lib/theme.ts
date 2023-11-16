@@ -32,15 +32,24 @@ const themeDefaults: ThemeOptions = {
       fontSize: tailwindConfig.theme.fontSize["4xl"],
       fontWeight: 600,
       letterSpacing: -0.75,
+      "@media (max-width:768px)": {
+        fontSize: tailwindConfig.theme.fontSize["2xl"],
+      },
     },
     h2: {
       fontSize: tailwindConfig.theme.fontSize["3xl"],
       fontWeight: 600,
       letterSpacing: -0.75,
+      "@media (max-width:768px)": {
+        fontSize: tailwindConfig.theme.fontSize["xl"],
+      },
     },
     h3: {
       fontSize: tailwindConfig.theme.fontSize["2xl"],
       letterSpacing: -0.75,
+      "@media (max-width:768px)": {
+        fontSize: tailwindConfig.theme.fontSize["lg"],
+      },
     },
     body1: {
       fontSize: tailwindConfig.theme.fontSize.base,

@@ -24,8 +24,8 @@ export default async function Home() {
     .eq("id", String(userAuth?.data?.user?.id));
 
   return (
-    <main className="flex flex-col w-full h-screen items-center">
-      <div className="mt-[8vw] w-1/2">
+    <main className="flex flex-col h-screen items-center mx-8 md:mx-0">
+      <div className="mt-[8vw]">
         <Typography className="flex" variant="h1">
           Hello {userData?.at(0)?.username ?? "User"},
         </Typography>

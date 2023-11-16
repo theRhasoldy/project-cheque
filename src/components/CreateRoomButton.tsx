@@ -47,7 +47,7 @@ const CreateRoomButton = () => {
       variant="outlined"
       className="flex gap-2 w-full h-56 !mt-12"
     >
-      <Typography fontWeight={600} fontSize={48} variant="h3">
+      <Typography fontWeight={600} variant="h3">
         Create a cheque
       </Typography>
     </Button>
