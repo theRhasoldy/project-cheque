@@ -21,7 +21,9 @@ const RoomList = async () => {
 
   return (
     <>
-      {roomsData?.map((room) => <RoomCard key={room?.id} name={room?.name} />)}
+      {roomsData?.map((room) => (
+        <RoomCard key={room?.id} name={room?.name} id={room?.id} />
+      ))}
     </>
   );
 };

@@ -1,16 +1,20 @@
 import { Card, CardContent, Typography } from "@mui/material";
+import Link from "next/link";
 
 type RoomCardProps = {
   name?: string | null;
+  id?: string | null;
 };
 
-const RoomCard = ({ name }: RoomCardProps) => {
+const RoomCard = ({ name, id }: RoomCardProps) => {
   return (
-    <Card className="w-full h-56">
-      <CardContent>
-        <Typography variant="h3">{name}</Typography>
-      </CardContent>
-    </Card>
+    <Link href={{ pathname: "/room/", query: `id=${id}` }}>
+      <Card className="w-full h-56">
+        <CardContent>
+          <Typography variant="h3">{name}</Typography>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 
