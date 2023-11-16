@@ -34,7 +34,7 @@ export default async function Home() {
         </Typography>
         <div className="flex flex-col gap-8">
           <CreateRoomButton />
-          <Suspense fallback={<Skeleton />}>
+          <Suspense fallback={<Skeleton variant="rectangular" height={56} />}>
             <RoomList />
           </Suspense>
         </div>
