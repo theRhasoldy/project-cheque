@@ -1,13 +1,21 @@
 import Typography from "@mui/material/Typography";
-import { supabaseServer } from "@/lib/api/supabase";
 import { Suspense } from "react";
 import RoomList from "./RoomList";
 import CreateRoomButton from "@/components/CreateRoomButton";
 import { Skeleton } from "@mui/material";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/lib/api/databaseTypes";
 
 export const revalidate = 0;
 
 export default async function Home() {
+  const cookieStore = cookies();
+
+  const supabaseServer = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  });
+
   const userAuth = await supabaseServer?.auth?.getUser();
 
   const { data: userData } = await supabaseServer

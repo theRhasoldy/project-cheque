@@ -1,8 +1,16 @@
 import React from "react";
-import { supabaseServer } from "@/lib/api/supabase";
 import RoomCard from "@/components/RoomCard";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/lib/api/databaseTypes";
 
 const RoomList = async () => {
+  const cookieStore = cookies();
+
+  const supabaseServer = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  });
+
   const { data: roomsData, error } = await supabaseServer
     .from("rooms")
     .select()
