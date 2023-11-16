@@ -1,7 +1,9 @@
-import CreateRoomButton from "@/components/CreateRoomButton";
-import RoomCard from "@/components/RoomCard";
-import { supabaseServer } from "@/lib/api/supabase";
 import Typography from "@mui/material/Typography";
+import { supabaseServer } from "@/lib/api/supabase";
+import { Suspense } from "react";
+import RoomList from "./RoomList";
+import CreateRoomButton from "@/components/CreateRoomButton";
+import { Skeleton } from "@mui/material";
 
 export const revalidate = 0;
 
@@ -12,14 +14,6 @@ export default async function Home() {
     .from("users")
     .select("username")
     .eq("id", String(userAuth?.data?.user?.id));
-
-  const { data: roomsData, error } = await supabaseServer
-    .from("rooms")
-    .select()
-    .eq("owner", "6a9bd2ec-7703-43ec-877e-99b30ffefded");
-
-  error && console.log(error.message);
-  console.log(roomsData);
 
   return (
     <main className="flex flex-col w-full h-screen items-center">
@@ -32,9 +26,9 @@ export default async function Home() {
         </Typography>
         <div className="flex flex-col gap-8">
           <CreateRoomButton />
-          {roomsData?.map((room) => (
-            <RoomCard key={room?.id} name={room?.name} />
-          ))}
+          <Suspense fallback={<Skeleton />}>
+            <RoomList />
+          </Suspense>
         </div>
       </div>
     </main>
