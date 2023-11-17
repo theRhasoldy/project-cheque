@@ -88,6 +88,7 @@ const themeDefaults: ThemeOptions = {
     MuiCard: {
       styleOverrides: {
         root: {
+          backgroundColor: tailwindConfig.theme.colors.light.primary.main,
           boxShadow: "0px 10px 15px 2px rgba(0,0,0,0.05)",
         },
       },

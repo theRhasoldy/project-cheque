@@ -13,34 +13,22 @@ export type User = {
   username?: string | null;
 };
 
+export type Order = {
+  id: string;
+  image_url: string | null;
+  name: string | null;
+  price: number | null;
+  room_id: string;
+  user_id: string;
+};
+
 export interface Database {
   public: {
     Tables: {
       orders: {
-        Row: {
-          id: string;
-          image_url: string | null;
-          name: string | null;
-          price: number | null;
-          room_id: string;
-          user_id: string;
-        };
-        Insert: {
-          id: string;
-          image_url?: string | null;
-          name?: string | null;
-          price?: number | null;
-          room_id: string;
-          user_id: string;
-        };
-        Update: {
-          id?: string;
-          image_url?: string | null;
-          name?: string | null;
-          price?: number | null;
-          room_id?: string;
-          user_id?: string;
-        };
+        Row: Order;
+        Insert: Order;
+        Update: Order;
         Relationships: [
           {
             foreignKeyName: "fk_rooms";

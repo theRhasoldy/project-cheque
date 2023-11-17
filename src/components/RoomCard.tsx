@@ -9,7 +9,7 @@ type RoomCardProps = {
 const RoomCard = ({ name, id }: RoomCardProps) => {
   return (
     <Link href={{ pathname: "/room/", query: `id=${id}` }}>
-      <Card className="w-full h-56">
+      <Card className="w-full h-56 hover:shadow-2xl bg-dark-primary-main">
         <CardContent>
           <Typography variant="h3">{name}</Typography>
         </CardContent>
