@@ -8,6 +8,7 @@ import PageContainer from "@/layouts/pageContainer";
 type RoomPageProps = {
   searchParams: {
     id: string;
+    name: string;
   };
 };
 
@@ -34,7 +35,7 @@ const RoomsPage = async ({ searchParams }: RoomPageProps) => {
 
   return (
     <PageContainer>
-      <Typography variant="h1">{searchParams.id}</Typography>
+      <Typography variant="h1">{searchParams.name}</Typography>
       <RealtimeOrders initialOrders={data ?? []} />
     </PageContainer>
   );
