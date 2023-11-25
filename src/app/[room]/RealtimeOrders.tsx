@@ -9,6 +9,10 @@ const RealtimeOrders = ({ initialOrders }: { initialOrders: Order[] }) => {
 
   const supabaseClient = createClientComponentClient<Database>();
 
+  useEffect(() => {
+    setRoomOrders(initialOrders);
+  }, [initialOrders]);
+
   // Listen to INSERT in orders table and add to the frontend side
   useEffect(() => {
     const channel = supabaseClient
@@ -26,7 +30,7 @@ const RealtimeOrders = ({ initialOrders }: { initialOrders: Order[] }) => {
     return () => {
       supabaseClient.removeChannel(channel);
     };
-  }, [supabaseClient]);
+  }, [initialOrders, supabaseClient]);
 
   // Listen to DELETE in orders table and update the list in the frontend side
   useEffect(() => {

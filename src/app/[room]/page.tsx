@@ -31,6 +31,8 @@ const RoomsPage = async ({ searchParams }: RoomPageProps) => {
     .select()
     .eq("room_id", searchParams.id);
 
+  data && console.log("Data fetched");
+
   return (
     <>
       <Typography variant="h1">{searchParams.id}</Typography>
