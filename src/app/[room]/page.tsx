@@ -26,7 +26,10 @@ const RoomsPage = async ({ searchParams }: RoomPageProps) => {
   });
 
   // Initial fetching of orders in server side
-  const { data } = await supabaseServer.from("orders").select();
+  const { data } = await supabaseServer
+    .from("orders")
+    .select()
+    .eq("room_id", searchParams.id);
 
   return (
     <>
