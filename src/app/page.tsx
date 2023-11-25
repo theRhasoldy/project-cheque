@@ -6,6 +6,7 @@ import { Skeleton } from "@mui/material";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/lib/api/databaseTypes";
+import PageContainer from "@/layouts/pageContainer";
 
 export default async function Home() {
   const cookieStore = cookies();
@@ -22,8 +23,8 @@ export default async function Home() {
     .eq("id", String(userAuth?.data?.user?.id));
 
   return (
-    <main className="flex flex-col h-screen items-center mx-8">
-      <div className="mt-[15vh]">
+    <main>
+      <PageContainer>
         <Typography className="flex" variant="h1">
           Hello {userData?.at(0)?.username ?? "User"},
         </Typography>
@@ -36,7 +37,7 @@ export default async function Home() {
             <RoomList />
           </Suspense>
         </div>
-      </div>
+      </PageContainer>
     </main>
   );
 }

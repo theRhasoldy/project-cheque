@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import RealtimeOrders from "./RealtimeOrders";
+import PageContainer from "@/layouts/pageContainer";
 
 type RoomPageProps = {
   searchParams: {
@@ -31,13 +32,11 @@ const RoomsPage = async ({ searchParams }: RoomPageProps) => {
     .select()
     .eq("room_id", searchParams.id);
 
-  data && console.log("Data fetched");
-
   return (
-    <>
+    <PageContainer>
       <Typography variant="h1">{searchParams.id}</Typography>
       <RealtimeOrders initialOrders={data ?? []} />
-    </>
+    </PageContainer>
   );
 };
 

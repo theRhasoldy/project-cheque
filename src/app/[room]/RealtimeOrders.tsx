@@ -1,5 +1,6 @@
 "use client";
 
+import OrderCard from "@/components/cards/OrderCard";
 import { Database, Order } from "@/lib/api/databaseTypes";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect, useState } from "react";
@@ -20,10 +21,7 @@ const RealtimeOrders = ({ initialOrders }: { initialOrders: Order[] }) => {
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "orders" },
-        (payload) => {
-          console.log(payload);
-          return setRoomOrders((prev) => [...prev, payload.new as Order]);
-        }
+        (payload) => setRoomOrders((prev) => [...prev, payload.new as Order])
       )
       .subscribe();
 
@@ -49,12 +47,12 @@ const RealtimeOrders = ({ initialOrders }: { initialOrders: Order[] }) => {
     return () => {
       supabaseClient.removeChannel(channel);
     };
-  }, [supabaseClient]);
+  }, [initialOrders, supabaseClient]);
 
   return (
     <>
       {roomOrders.map((order) => (
-        <p key={order.id}>{order.name}</p>
+        <OrderCard key={order.id} details={order} />
       ))}
     </>
   );

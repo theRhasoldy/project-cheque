@@ -1,5 +1,5 @@
 import React from "react";
-import RoomCard from "@/components/RoomCard";
+import RoomCard from "@/components/cards/RoomCard";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/lib/api/databaseTypes";
@@ -17,7 +17,6 @@ const RoomList = async () => {
     .eq("owner", "6a9bd2ec-7703-43ec-877e-99b30ffefded");
 
   error && console.log(error.message);
-  console.log(roomsData);
 
   return (
     <>
