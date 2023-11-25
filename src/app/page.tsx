@@ -7,8 +7,6 @@ import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/lib/api/databaseTypes";
 
-export const revalidate = 0;
-
 export default async function Home() {
   const cookieStore = cookies();
 
